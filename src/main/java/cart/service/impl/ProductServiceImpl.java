@@ -33,14 +33,18 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void add(String productName, String price, String qty, String productImageBase64) {
-		// TODO Auto-generated method stub
-
+		Product product = new Product();
+		product.setProductName(productName);
+		product.setPrice(Integer.parseInt(price));
+		product.setQty(Integer.parseInt(qty));
+		product.setImageBase64(productImageBase64);
+		
+		productDAO.add(product);
 	}
 
 	@Override
-	public void delete(String productId) {
-		// TODO Auto-generated method stub
-
+	public void delete(Integer productId) {
+		productDAO.delete(productId);
 	}
 
 }

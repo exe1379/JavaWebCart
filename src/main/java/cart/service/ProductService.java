@@ -11,5 +11,5 @@ public interface ProductService {
 	// 根據傳入資料新增一筆 product
 	void add(String productName, String price, String qty, String productImageBase64); 
 	
-	void delete(String productId); //根據productId刪除product
+	void delete(Integer productId); //根據productId刪除product
 }

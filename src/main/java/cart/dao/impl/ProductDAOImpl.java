@@ -1,5 +1,6 @@
 package cart.dao.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,14 +36,33 @@ public class ProductDAOImpl extends BaseDao implements ProductDAO {
 
 	@Override
 	public void add(Product product) {
-		// TODO Auto-generated method stub
-
+		String sql = "insert into product(product_name, price, qty, image_base64) values(?, ?, ?, ?)";
+		
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			// 配置資料到 ?
+			pstmt.setString(1, product.getProductName());
+			pstmt.setInt(2, product.getPrice());
+			pstmt.setInt(3, product.getQty());
+			pstmt.setString(4, product.getImageBase64());
+			
+			// 執行新增
+			int rowcount = pstmt.executeUpdate();
+			System.out.println("新增成功筆數:" + rowcount);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
-
 	@Override
 	public void delete(Integer productId) {
-		// TODO Auto-generated method stub
-
+		String sql = "delete from product where product_id = ?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setInt(1, productId);
+			int rowcount = pstmt.executeUpdate();
+			System.out.println("資料刪除筆數:" + rowcount);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}	
 	}
-
 }

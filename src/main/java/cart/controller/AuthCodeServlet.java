@@ -34,7 +34,7 @@ public class AuthCodeServlet extends HttpServlet{
 		//建立畫布
 		Graphics g = img.getGraphics();
 		//設定顏色
-		g.setColor(Color.yellow);
+		g.setColor(Color.white);
 		//塗滿背景
 		g.fillRect(0, 0, 80, 30);
 		//設定顏色
@@ -46,7 +46,7 @@ public class AuthCodeServlet extends HttpServlet{
 		g.setColor(Color.red);
 		Random random = new Random();
 		// 畫干擾線
-		for(int i = 0; i<15 ; i++) {
+		for(int i = 0; i<3 ; i++) {
 			int x1 = random.nextInt(80);
 			int y1 = random.nextInt(30);
 			int x2 = random.nextInt(80);
